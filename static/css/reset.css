@@ -131,3 +131,11 @@ body {
 		font-size: 160px
 	}
 }
+
+.flex {display: flex; display: -webkit-box; display: -webkit-flex;}
+.flex-column {flex-direction: column; -webkit-box-direction: reverse;}
+.flex-justify {justify-content: center; -webkit-justify-content: center; -webkit-box-pack: center;}
+.flex-align {align-items: center; -webkit-align-items: center; -webkit-box-align: center;}
+.flex1 {flex: 1; -webkit-box-flex: 1; -webkit-flex: 1; flex-grow: 1; -webkit-box-flex: 1;}
+
+img {vertical-align: middle; display: block;}
