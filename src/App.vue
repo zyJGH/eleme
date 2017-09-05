@@ -1,12 +1,23 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <heade></heade>
+    <div class="tab">
+      <router-link to="/seller" class="tab-item">商品</router-link>
+      <router-link to="/goods" class="tab-item">評論</router-link>
+      <router-link to="/ratings" class="tab-item">商家</router-link>
+    </div>
+    <div>sdf</div>
+     <router-view></router-view> 
   </div>
 </template>
 
 <script>
+import heade from './components/header/header'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    heade: heade
+  }
 }
 </script>
 
@@ -17,6 +28,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+
+.tab {height: .4rem; line-height: .4rem; display: flex; width: 100%; font-size: .14rem; border-bottom: 1px solid rgba(7, 17, 27, .1)}
+.tab-item {flex: 1;}
 </style>
