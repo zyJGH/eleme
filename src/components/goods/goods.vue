@@ -1,9 +1,22 @@
 <template>
-  <div class="goods">goods</div>
+  <div class="goods">
+	  <div class="" v-for="item in good">
+	  	{{item.name}}
+	  </div>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+	/* eslint-disable no-undef */
+	/* eslint-disable eqeqeq */
+	name: 'goods',
+	props: {good: JSON},
+	created () {
+		console.log(this.good)
+	}
+	
+}
 </script>
 
 <style scoped>

@@ -2,7 +2,7 @@
   <div id="app">
     <heade></heade>
     <div class="tab">
-      <router-link to="/goods" class="tab-item">商品</router-link>
+      <router-link to="/goods" class="tab-item" :good="goods">商品</router-link>
       <router-link to="/ratings" class="tab-item">評論</router-link>
       <router-link to="/seller" class="tab-item">商家</router-link>
     </div>
@@ -14,22 +14,24 @@ import heade from './components/header/header'
 import axios from 'axios'
 export default {
 	/* eslint-disable no-undef */
+	/* eslint-disable eqeqeq */
   name: 'app',
   data () {
   	return {
-  		goods: {},
+  		goods: 'sss',
   		ratings: {},
   		seller: {}
   	}
   },
   created () {
 		axios.get('api/goods').then(res => {
-			console.log(res)
-			if (res.errno === 0) {
-				this.goods = res.data
+//			console.log(res)
+			if (res.data.errno == 0) {
+				this.goods = res.data.data
 				console.log(this.goods)
 			}
 		})
+		console.log(this.goods)
   },
   components: {
     heade: heade
