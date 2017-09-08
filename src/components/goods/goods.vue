@@ -1,7 +1,7 @@
 <template>
-  <div class="goods">
-	  <div class="" v-for="item in good">
-	  	{{item.name}}
+  <div class="goodsVue">
+	  <div>
+	  	{{good}}
 	  </div>
   </div>
 </template>
@@ -10,12 +10,8 @@
 export default {
 	/* eslint-disable no-undef */
 	/* eslint-disable eqeqeq */
-	name: 'goods',
-	props: {good: JSON},
-	created () {
-		console.log(this.good)
-	}
-	
+  name: 'goodsVue',
+	props: {good: Array}	
 }
 </script>
 

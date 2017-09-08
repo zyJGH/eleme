@@ -1,9 +1,22 @@
 <template>
-  <div class="ratings">ratings</div>
+  <div class="ratingsVue">
+    <div>
+      {{ratings}}
+    </div>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  /* eslint-disable no-undef */
+	/* eslint-disable eqeqeq */
+  name: 'ratingsVue',
+  props: {ratings: Array},
+  created () {
+    console.log(this.ratings)
+  }
+
+}
 </script>
 
 <style scoped>

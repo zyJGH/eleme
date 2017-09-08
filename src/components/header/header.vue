@@ -1,16 +1,18 @@
 <template>
-  <div class="header">
+  <div class="headerVue">
     <div class="header-top flex">
-        <div class="header-pic"></div>
+        <div class="header-pic">
+          <img :src="seller.avatar" alt="">
+        </div>
         <div class="header-sell flex1">
           <div class="header-brand flex">
           	<img src="../../../static/img/brand@3x.png"/>
-          	<div class="flex1">周品</div>
+          	<div class="flex1">{{seller.name}}</div>
           </div>
-          <div class="header-dispatching">蜂鸟专送/23分钟</div>
+          <div class="header-dispatching">{{seller.description}} / {{seller.deliveryTime}}分钟送达</div>
           <div class="header-fullCut flex">
           	<img src="../../../static/img/decrease_1@3x.png"/>
-          	<div class="flex1">在线支付满28减5</div>
+          	<div class="flex1">{{seller.supports[0]}}</div>
           	<div class="header-more flex">
           		5个<div class="icon iconfont icon-icon"></div>
           	</div>
@@ -26,13 +28,19 @@
 </template>
 
 <script>
-export default {}
+export default {
+  /* eslint-disable no-undef */
+	/* eslint-disable eqeqeq */
+  name: 'headerVue',
+  props: {seller: Object}
+}
 </script>
 
 <style scoped>
-.header {background: rgba(7, 17, 27, .5); color: #fff; }
+.headerVue {background: rgba(7, 17, 27, .5); color: #fff; }
 .header-top {padding: .24rem .06rem 0 .24rem; }
-.header-pic {margin: 0 .16rem .18rem 0; width: .64rem; height: .64rem; background: tan; border-radius: .04rem;}
+.header-pic {margin: 0 .16rem .18rem 0; width: .64rem; height: .64rem;}
+.header-pic img {width: 100%; border-radius: .04rem;}
 .header-sell {margin: .02rem .06rem 0 0; }
 .header-brand img {width: .3rem; height: .18rem; margin-right: .06rem; }
 .header-brand .flex1 {line-height: .18rem; font-size: .16rem; }

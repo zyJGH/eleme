@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <heade></heade>
+    <heade :seller="seller"></heade>
     <div class="tab">
-      <router-link to="/goods" class="tab-item" :good="goods">商品</router-link>
-      <router-link to="/ratings" class="tab-item">評論</router-link>
+      <router-link to="/goods" class="tab-item">商品</router-link>
+      <router-link to="/ratings" class="tab-item">评论</router-link>
       <router-link to="/seller" class="tab-item">商家</router-link>
     </div>
-     <router-view></router-view> 
+     <router-view :good="goods" :ratings="ratings" :seller="seller"></router-view> 
   </div>
 </template>
 <script>
@@ -18,20 +18,30 @@ export default {
   name: 'app',
   data () {
   	return {
-  		goods: 'sss',
-  		ratings: {},
+  		goods: [],
+  		ratings: [],
   		seller: {}
   	}
   },
   created () {
+    // 商品
 		axios.get('api/goods').then(res => {
-//			console.log(res)
 			if (res.data.errno == 0) {
 				this.goods = res.data.data
-				console.log(this.goods)
+			}
+    })
+    // 评论
+    axios.get('api/ratings').then(res => {
+			if (res.data.errno == 0) {
+				this.ratings = res.data.data
+			}
+    })
+    // 商家信息
+    axios.get('api/seller').then(res => {
+			if (res.data.errno == 0) {
+				this.seller = res.data.data
 			}
 		})
-		console.log(this.goods)
   },
   components: {
     heade: heade
