@@ -24,19 +24,16 @@ export default {
   	}
   },
   created () {
-    // 商品
 		axios.get('api/goods').then(res => {
 			if (res.data.errno == 0) {
 				this.goods = res.data.data
 			}
     })
-    // 评论
     axios.get('api/ratings').then(res => {
 			if (res.data.errno == 0) {
 				this.ratings = res.data.data
 			}
     })
-    // 商家信息
     axios.get('api/seller').then(res => {
 			if (res.data.errno == 0) {
 				this.seller = res.data.data
@@ -59,5 +56,5 @@ export default {
 
 .tab {height: .4rem; text-align: center; line-height: .4rem; display: flex; width: 100%; font-size: .14rem; border-bottom: 1px solid rgba(7, 17, 27, .1)}
 .tab-item {flex: 1;}
-.active {color: rgb(240, 20, 20);}
+.tab-item.active {color: rgb(240, 20, 20);}
 </style>
