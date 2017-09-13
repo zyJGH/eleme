@@ -1,5 +1,8 @@
 <template>
   <div class="headerVue">
+  	<div class="header-bg">
+  		<img :src="seller.avatar"/>
+  	</div>
     <div class="header-top flex">
         <div class="header-pic">
           <img :src="seller.avatar">
@@ -24,6 +27,18 @@
     	<div class="flex1">{{seller.bulletin}}</div>
     	<div class="icon iconfont icon-icon"></div>
     </div>
+    
+    <div class="mask-box">
+    	<div class="mask"></div>
+    	<div class="mask-content">
+    		<div class="mask-title">{{seller.name}}</div>
+    		<div class="mask-star flex">
+    			<img src="../../../static/img/star24_on@2x.png" v-for="item in starOn"/>
+    			<img src="../../../static/img/star24_half@2x.png" v-for="item in starHalf"/>
+    			<img src="../../../static/img/star24_off@2x.png" v-for="item in starOff"/>
+    		</div>
+    	</div>
+    </div>
   </div>
 </template>
 
@@ -35,12 +50,30 @@ export default {
 	props: {seller: Object},
 	created () {
 		this.support = ['decrease_1', 'discount_1', 'special_1', 'invoice_1', 'guarantee_1']
+	},
+	computed: {
+		starOn: function () {
+			return Math.floor(this.seller.deliveryPrice)
+		},
+		starHalf: function () {
+			console.log(this.seller.deliveryPrice.toString().indexOf('.'))
+			if (this.seller.deliveryPrice.toString().indexOf('.') != -1) {
+				return 1
+			} else {
+				return 0
+			}
+		},
+		starOff: function () {
+			return 5 - this.starOn - this.starHalf
+		}
 	}
 }
 </script>
 
 <style scoped>
-.headerVue {background: rgba(7, 17, 27, .5); }
+.headerVue {background: rgba(7, 17, 27, .5); position: relative;}
+.header-bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden;}
+.header-bg img {font-size: 0; width: 100%; filter: blur(2px);}
 .header-top {padding: .24rem .06rem 0 .24rem; color: #fff;position: relative;}
 .header-pic {margin: 0 .16rem .18rem 0; width: .64rem; height: .64rem;}
 .header-pic img {width: 100%; border-radius: .04rem;}
@@ -62,5 +95,11 @@ export default {
 .header-bottom img {width: .22rem; height: .12rem; margin-right: .04rem;}
 .header-bottom .flex1 { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; font-size: .1rem;}
 .header-bottom .iconfont.icon-icon {font-size: .08rem;}
+.mask-box {position: absolute; top: 0; left: 0;width: 100%; height: 100vh; color: #fff;}
+.mask {width: 100%; height: 100%; background: rgba(7, 17, 27, .8);}
+.mask-content {width: 100%; height: 100%; position: absolute; top: 0; left: 0; text-align: center;}
+.mask-title {padding: .64rem 0 .16rem; font-size: .16rem; font-weight: 700;line-height: .16rem;}
+.mask-star {width: 55%; margin: 0 auto; justify-content: space-between;}
+.mask-star img {width: .24rem; height: .24rem;}
 </style>
  
