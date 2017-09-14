@@ -27,6 +27,7 @@ module.exports = {
     "no-mixed-spaces-and-tabs": "off",
     "indent": "off",
     "no-trailing-spaces": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "no-sequences": "off"
   }
 }

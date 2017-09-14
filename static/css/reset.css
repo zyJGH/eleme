@@ -22,6 +22,7 @@ time, mark, audio, video, input {
     font-weight: normal;
     vertical-align: baseline;
     font-size: .14rem;
+    -webkit-touch-callout:none; -webkit-user-select:none;user-select:none;
 }
 
 /* HTML5 display-role reset for older browsers */
